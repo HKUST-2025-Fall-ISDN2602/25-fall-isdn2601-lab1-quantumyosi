@@ -26,10 +26,10 @@ void setup() {
     analogWrite(Vin ,onPeriod);// Output PWM at Vin      
     int Vout_value = analogRead(Vout); // read the voltage level at Vout 
     int c_value = analogRead(Cal); // read the voltage level at the node for current calcultion  
-    //c = c_value*(3.3/4095); //calculate the voltage at the node for current calcultion  
-    x = ((float)onPeriod/255)*100; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4 by %
-    y = (float)Vout_value*3.3/4095; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
-    Serial.print(x); 
+    c = (float)c_value*(3.3/4095); //calculate the voltage at the node for current calcultion  
+    x = (float)Vout_value*(3.3/4095); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4 by %
+    y = (c-x)/R; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
+    Serial.print(x*1000); 
     Serial.print(","); // seperate values by comma 
     Serial.println(y);
   }
