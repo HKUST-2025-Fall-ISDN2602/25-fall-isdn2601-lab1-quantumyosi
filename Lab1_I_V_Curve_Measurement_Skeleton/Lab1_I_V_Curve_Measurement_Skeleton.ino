@@ -29,7 +29,7 @@ void setup() {
     c = (float)c_value*(3.3/4095); //calculate the voltage at the node for current calcultion  
     x = (float)Vout_value*(3.3/4095); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4 by %
     y = (c-x)/R; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
-    Serial.print(x*1000); 
+    Serial.print((c-x)*1000); 
     Serial.print(","); // seperate values by comma 
     Serial.println(y);
   }
